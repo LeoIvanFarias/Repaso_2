@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="Seguridad">
+    <default-activity>login</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <input-parameter-definition id="__11">
+      <name>NombredeUsuario</name>
+      <value>#{pageFlowScope.NombredeUsuario}</value>
+      <class>java.lang.String</class>
+      <required/>
+    </input-parameter-definition>
+    <managed-bean id="__8">
+      <managed-bean-name>backing_login</managed-bean-name>
+      <managed-bean-class>backing.backing_login</managed-bean-class>
+      <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <view id="login">
+      <page>/login.jsff</page>
+    </view>
+    <router id="router1">
+      <case id="__9">
+        <expression>#{backing_login.password.value =='Oracle'}</expression>
+        <outcome>bueno</outcome>
+      </case>
+      <default-outcome>malo</default-outcome>
+    </router>
+    <task-flow-call id="Flujo-Actualizacion-Empleados">
+      <task-flow-reference>
+        <document>/WEB-INF/Flujo-Actualizacion-Empleados.xml</document>
+        <id>Flujo-Actualizacion-Empleados</id>
+      </task-flow-reference>
+    </task-flow-call>
+    <view id="error">
+      <page>/error.jsff</page>
+    </view>
+    <control-flow-rule id="__1">
+      <from-activity-id>login</from-activity-id>
+      <control-flow-case id="__2">
+        <to-activity-id>router1</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__3">
+      <from-activity-id>router1</from-activity-id>
+      <control-flow-case id="__4">
+        <from-outcome>malo</from-outcome>
+        <to-activity-id>error</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__5">
+        <from-outcome>bueno</from-outcome>
+        <to-activity-id>Flujo-Actualizacion-Empleados</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__6">
+      <from-activity-id>error</from-activity-id>
+      <control-flow-case id="__7">
+        <from-outcome>login</from-outcome>
+        <to-activity-id>login</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

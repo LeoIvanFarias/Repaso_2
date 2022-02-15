@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application" version="12.2.1.11.57" id="DataBindings"
+             SeparateXMLFiles="false" Package="view" ClientType="Generic">
+  <definitionFactories>
+    <factory nameSpace="http://xmlns.oracle.com/adf/controller/binding"
+             className="oracle.adf.controller.internal.binding.TaskFlowBindingDefFactoryImpl"/>
+    <dtfactory className="oracle.adf.controller.internal.dtrt.binding.BindingDTObjectFactory"/>
+  </definitionFactories>
+  <pageMap>
+    <page path="/Busqueda.jsff" usageId="view_BusquedaPageDef"/>
+    <page path="/Actualizacion.jsff" usageId="view_ActualizacionPageDef"/>
+    <page path="/Maestro.jsf" usageId="view_MaestroPageDef"/>
+    <page path="/untitled1.jsf" usageId="view_untitled1PageDef"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="view_BusquedaPageDef" path="view.pageDefs.BusquedaPageDef"/>
+    <page id="view_ActualizacionPageDef" path="view.pageDefs.ActualizacionPageDef"/>
+    <page id="view_MaestroPageDef" path="view.pageDefs.MaestroPageDef"/>
+    <page id="view_untitled1PageDef" path="view.pageDefs.untitled1PageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <BC4JDataControl id="AppModuleDataControl" Package="demo.model"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl" SupportsTransactions="true"
+                     SupportsFindMode="true" SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true" Configuration="AppModuleLocal" syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+  </dataControlUsages>
+</Application>

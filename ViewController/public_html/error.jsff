@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <af:outputText value="Error, Contraseña Incorrecta" id="ot1"/>
+  <af:spacer width="100" height="10" id="s1"/>
+  <af:button text="Reintentar" id="b1" action="login"/>
+</ui:composition>
